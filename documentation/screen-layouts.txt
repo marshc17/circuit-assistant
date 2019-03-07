@@ -9,15 +9,19 @@ Bottom Bar
 	* Settings (Gear Icon)
 
 Settings Screen
+	* Top bar
+		* Back button
 	* Mute voice assistant
 	* Log Out (when authentication implemented)
 
 Timer Screen
-	* Three-dot
-		* Edit Routine
-	* Share button
-		* Copy URL
-		* Send URL via main social media apps (email, Facebook, etc)
+	* Top bar
+		* Routine title in center
+		* Three-dot
+			* Edit Routine
+		* Share button
+			* Copy URL
+			* Send URL via main social media apps (email, Facebook, etc)
 	* Main screen
 		* Timer at top
 			* https://dribbble.com/shots/1810976-Timer-App
@@ -37,8 +41,9 @@ Timer Screen
 				* This should open an information dialog explainign you can just say "Ok ready" when ready
 
 My Routines Screen
-	* No three-dot
-	* No share
+	* Top bar
+		* Routine title in center
+		* Otherwise empty
 	* "+" (fab) button (creates new routine)
 		* Slide out two options:
 			* Add routine
@@ -48,9 +53,11 @@ My Routines Screen
 	* Tapping a routine loads it (on the timer screen)
 
 Edit Routine Screen
-	* Three-dot
-		* Edit title
-			* Open same slide up panel from creating the routine
+    Top bar
+   		* Routine title in center
+		* Three-dot
+			* Edit title
+				* Open same slide up panel from creating the routine
 	* Replace bottom bar with "Cancel" | "Save" buttons that span full bar
 	* Share button to share routine (without necessarily needing to save it)
 	* Header has routine name
@@ -60,6 +67,12 @@ Edit Routine Screen
 		* Click on circuit in list to open the Circuit screen
 
 Edit Circuit Screen (subscreen of Edit Routine)
+	* Three-dot menu
+		* "Edit delays"
+			* Opens a "Delays" screen
+			* Has input for "Initial delay"
+			* Has input for "Delay between actions"
+	* Replace bottom bar with "Cancel" | "Ok" buttons that span full bar
 	* (+) fab button to add an action
 		* Slide out panel from buttom
 			* Name input
