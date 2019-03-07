@@ -1,0 +1,101 @@
+Top Bar
+	* Back button (left, when available, otherwise hidden)
+	* Share button (right, just before three-dot)
+	* Three-dot menu (right, when available)
+
+Bottom Bar
+	* Timer (Clock Icon)
+	* My Routines (Books?)
+	* Settings (Gear Icon)
+
+Settings Screen
+	* Mute voice assistant
+	* Log Out (when authentication implemented)
+
+Timer Screen
+	* Three-dot
+		* Edit Routine
+	* Share button
+		* Copy URL
+		* Send URL via main social media apps (email, Facebook, etc)
+	* Main screen
+		* Timer at top
+			* https://dribbble.com/shots/1810976-Timer-App
+		* Loop around timer for remaining time
+		* Play/pause button (triangle/two lines icon) on left
+		* Reset button (square for stop icon)
+		* Round # immediately below (larger text)
+		* Action name next (smaller text, scrolls)
+		* List of actions next (non-editable, just simple text)
+			* Lightened background, where timer is in a material "header" and the list is a lowered area
+			* Collapsible list (each circuit collapsible)
+			* Current action is highlighted
+		* Timer always fixed on screen, list is scrollable
+		* If the current action is a "rep" instead, replace timer with the rep count "30 reps"
+			* Replace both play + reset buttons with a single "Ready" button
+			* Slightly offset the "Ready" button to the left and place an "(i)" icon to the right
+				* This should open an information dialog explainign you can just say "Ok ready" when ready
+
+My Routines Screen
+	* No three-dot
+	* No share
+	* "+" (fab) button (creates new routine)
+		* Slide out two options:
+			* Add routine
+				* Slide up panel with single field for name
+				* If name saved, opens full edit routine panel (else cancels)
+			* Add routine group
+	* Tapping a routine loads it (on the timer screen)
+
+Edit Routine Screen
+	* Three-dot
+		* Edit title
+			* Open same slide up panel from creating the routine
+	* Replace bottom bar with "Cancel" | "Save" buttons that span full bar
+	* Share button to share routine (without necessarily needing to save it)
+	* Header has routine name
+	* (+) fab button to add a circuit "Add circuit to routine"
+		* Panel from bottom with simple input for circuit name (see Todoist add task)
+		* Back button to cancel (propmpt "Are you sure?")
+		* Click on circuit in list to open the Circuit screen
+
+Edit Circuit Screen (subscreen of Edit Routine)
+	* (+) fab button to add an action
+		* Slide out panel from buttom
+			* Name input
+			* Type: "Interval" or "Repetition"
+			* If interval:
+				* Minutes
+				* Seconds
+			* If repetition:
+				* Repetitions
+			* "Next" arrow/paper airplane to "Add"
+			* Back button to cancel (prompt "Are you sure?")
+
+Routine structure
+-----------------
+
+class Routine {
+	Circuits: Circuit[];
+}
+
+class Circuit {
+	Repititions: number;
+	Actions: Action[];
+}
+
+interface Action {
+	Name: string;
+	getDisplayName(): string;
+}
+
+class TimedAction implements Action {
+	Minutes: number;
+	Seconds: number;
+	Name: string;
+}
+
+class RepetitionAction implements Action {
+	Repetitions: number;
+	Name: string;
+}
