@@ -1,0 +1,36 @@
+*********************
+* Circuit Assistant *
+*********************
+
+Tech Stack
+----------
+* Single sign on
+	* Google
+	* Facebook
+* Clients
+	* Android client
+	* iOS client (reach)
+	* web (angular, reach)
+* REST API (lambda)
+	* Dev
+	* Staging
+	* Production
+* Mongo DB
+* Source control/pipeline
+	* git
+	* jenkins? (in AWS w/ git hooks)
+
+* REST API will only be for loading timer data encoded in URLs
+	* "Saving" a timer could just encode a URL to pass to others (and save that timer data locally)
+
+Application features
+--------------------
+* Sign on
+* Timer
+	* Time mode
+	* Rep mode
+		* Manual "ready" button
+		* Voice-activated "ready" (say "Ok next" or "Ok ready")
+* Save/load
+* Link to load a timer (both in web + mobile)
+	* Loads the data, but then treats it as if the user entered it, so they can save it as one of "their timers"
