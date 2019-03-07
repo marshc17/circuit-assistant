@@ -1,0 +1,125 @@
+FT-1:
+Countdown Timer
+	* Timer screen
+	* Start/pause button
+	* Reset button
+	* Timer takes up top half of screen (botton half for actions)
+		* Use full screen for now (but keep spacing in mind for later)
+
+FT-2:
+Show Action List
+	* Read-only (existing data)
+	* Display action name
+	* Display action time
+	* Action list is scrollable and fills bottom half of screen
+
+FT-3:
+Timer Based on Actions
+	* Single round (for now)
+	* Screen shows current action (truncate for now to fit)
+	* No voice feedback
+
+FT-4:
+Support Adding Actions
+	* Use material "fab" action button in lower right
+		* https://material.io/design/components/buttons-floating-action-button.html#types-of-transitions
+		* Just a plus icon the goes to a second screen for filling out form of action values
+		* Second screen has a "back icon in top left"
+	* Action name
+	* Length (in seconds)
+		* Minutes input
+		* Seconds input (no cap, but merge with minutes and save in "normalized" form after saving)
+	* Add button (or just use keyboard submit? what's the standard approach?)
+
+FT-5:
+Support Deleting Actions
+	* "X" next to action to delete (on right, material design style list)
+	* "Are you sure?" prompt
+
+FT-6:
+Support Multiple Rounds
+	* "Round(s)" input box
+	* Display above timer for current round number
+
+FT-7:
+Support Setting Delays Between Actions
+	* Input for "Initial delay"
+	* Input for "Delay between actions"
+
+FT-8:
+Add "Reps" Action Type
+	* Support multiple action "Types" ("Interval" and "Reps")
+	* Dropdown to select type when adding action
+	* If type is "Interval" second input reads "Secconds", if type is "Reps" input reads "# of reps" instead
+	* Show "Ready" button during "Reps" actions during timer (user must push before next action starts)
+
+FT-9:
+Read Actions Out Loud (text-to-speech)
+	* Read all actions out loud as they start
+	* Announce remaining time
+		* "Get ready for {action_name}" (if delay between actions, either initial or between. Say it at start of delay)
+		* "Round {round #}" (say before "Start {action_name}" right at the start of the action. Say "Get ready for" before this at start of delay)
+		* "Start {action_name}" (Right on time as action starts)
+		* Count down every second from 5...1 (don't say "seconds", just "5, 4, 3...")
+		* Count down every 10 seconds from 30...10 (say "30 seconds, 20 seconds, etc")
+		* Count down every 30 seconds from 3:00...0:30 (say "2 minutes, 30 seconds, etc")
+		* Count down every 60 seconds from 3:00+ (say "5 minutes, 4 minutes, etc")
+		* "All done" (at end)
+	* Allow toggling this on and off w/ a simple mute/speaker icon/button (default to on)
+
+FT-10:
+Support Completing Reps With Voice Command
+	* Allow user to say "Ok Ready" to trigger "Ready" button during Reps actions
+	* Add documentation to inform user (write 'Or say "Ok ReadY"' next/below to "Ready" button)
+
+FT-11:
+Support Arranging Action Order
+	* Drag and drop
+	* Hold on action for a second or two to enter "drag" mode
+
+FT-12:
+Support Expanding Action List to Full Screen
+	* Add an "expand" button to top right of action list header to expand to a full screen view
+
+FT-13:
+Scroll Long Action Names Horizontally
+	* Instead of truncating long action names, scroll them
+	* Scroll algorithm:
+		* Pause for a second or two
+		* Then scroll right (until off screen)
+		* Then wrap onto right again and have the start of the action scroll back into view
+		* Then when it lines up with the start again, pause for one or two seconds again
+		* Repeat
+
+FT-14:
+Allow Saving/Loading Action List (local storage)
+	* Add "hamburger" menu to top right
+		* Triggers slide out menu
+	* Save button (in menu)
+		* Switch to second page to save
+		* Page has "Name" input and "Save" button and "Cancel" button
+	* Load button (in menu)
+		* Switch to "load" page listing all loads
+		* Loads show "Name" and "Save time"
+		* Double click to load
+		* Prompt "Are you sure?" if fields aren't cleared (will overwrite data on screen)
+
+FT-15:
+Allow Loading from URL
+	* URL loads the full web app in browser then populates data
+		* Consider format so later if android or iOS app detected, open those apps instead
+		* Use a generic encoded format (base64? Something unique, condensed, look up URL minification algorithms)
+	* Loads data into screen
+	* Can then save the data using normal "save" process if desired
+	* Version API (v1)
+
+FT-16:
+Allow Generating URL
+	* Add "Share as URL" button to menu
+	* Loads data onto screen
+
+FT-17:
+Allow Configuration of Web App
+	* Explore if mustache templates are appropriate (or better way to do this with angular)
+	* Allow configuring of "Produciton" "Staging", "Developmen" (to feature branch level, or completely custom per developer)
+	* Main mustache template files and transform files "per developer"
